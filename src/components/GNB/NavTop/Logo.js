@@ -8,7 +8,9 @@ const Logo = (props) => {
         <button>
           <img src={burger_img} alt="burger_img" />
         </button>
-        <div>wanted</div>
+        <a href="/" className={classes.main}>
+          <i className={classes.new}></i>
+        </a>
       </div>
     </div>
   );

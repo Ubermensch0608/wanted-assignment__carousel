@@ -11,3 +11,13 @@
   height: 14px;
   object-fit: contain;
 }
+
+.logo a {
+  text-decoration: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+.main {
+  display: block;
+}
