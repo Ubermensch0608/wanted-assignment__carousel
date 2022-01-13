@@ -1,0 +1,39 @@
+.main {
+  background-color: #fff;
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+.list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0px 50px;
+}
+
+.track {
+  opacity: 1;
+  /* transform: translate3d(-20468px, 0px, 0px); */
+  width: 44220px;
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+}
+.track::before {
+  content: "";
+  display: table;
+}
+
+@media (min-width: 1200px) {
+  .main {
+    padding-top: 25px;
+  }
+  .banner {
+    height: auto;
+  }
+}

@@ -1,10 +1,11 @@
+import classes from "./SlideImage.module.css";
+
 const SlideImage = (props) => {
   return (
-    <div>
-      <img
-        src="https://static.wanted.co.kr/images/banners/1468/3df61cbc.jpg"
-        alt="해, 커리어 EP 02 공개"
-      />
+    <div className={classes["slide-image"]}>
+      <a>
+        <img src={props.src} alt={props.alt} />
+      </a>
     </div>
   );
 };
