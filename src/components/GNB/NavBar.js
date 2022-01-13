@@ -2,7 +2,11 @@ import MainBar from "./MainBar";
 import classes from "./NavBar.module.css";
 
 const NavBar = (props) => {
-  return <MainBar className={classes["nav-bar"]} />;
+  return (
+    <div className={classes["nav-bar"]}>
+      <MainBar />
+    </div>
+  );
 };
 
 export default NavBar;

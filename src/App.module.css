@@ -5,12 +5,21 @@
 .banner {
   position: relative;
   overflow: hidden;
+  margin-bottom: 0;
+}
+
+.slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  user-select: none;
+  touch-action: pan-y;
 }
 
 .list {
   position: relative;
-  overflow: hidden;
-  display: block;
+  overflow: scroll;
+  display: grid;
   margin: 0;
   padding: 0px 50px;
 }
@@ -18,7 +27,7 @@
 .track {
   opacity: 1;
   /* transform: translate3d(-20468px, 0px, 0px); */
-  width: 44220px;
+  width: 15000px;
   position: relative;
   left: 0;
   top: 0;
@@ -27,6 +36,13 @@
 .track::before {
   content: "";
   display: table;
+}
+
+.prev {
+  left: calc((100% - 1210px) / 2);
+}
+.next {
+  right: calc((100% - 1200px) / 2);
 }
 
 @media (min-width: 1200px) {
