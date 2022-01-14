@@ -8,7 +8,11 @@ const Slide = (props) => {
       <div>
         <SlideImage src={props.src} alt={props.alt} />
       </div>
-      <SlideInfo title={props.title} desc={props.desc} />
+      <SlideInfo
+        className={classes.hidden}
+        title={props.title}
+        desc={props.desc}
+      />
     </div>
   );
 };
