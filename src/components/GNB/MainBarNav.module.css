@@ -5,3 +5,30 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  height: inherit;
+  text-align: center;
+  margin: 0;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .top {
+    padding: 15px 0;
+    height: 60px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .top {
+    height: 60px;
+    width: 100%;
+    padding: 15px 20px;
+  }
+}

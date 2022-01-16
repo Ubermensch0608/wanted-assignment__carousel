@@ -1,15 +1,13 @@
 .slide {
   outline: none;
   width: 1060px;
+  height: 300px;
   position: relative;
-  display: block;
+  display: table;
   float: left;
   height: 100%;
   min-height: 1px;
-}
-
-.hidden {
-  display: hidden;
+  filter: brightness(50%);
 }
 
 @media (min-width: 1200px) {

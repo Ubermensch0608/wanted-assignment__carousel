@@ -1,16 +1,21 @@
 .logo {
   display: flex;
+  margin-left: 10px;
 }
 .logo button {
-  margin-top: -2px;
   margin-right: 15px;
 }
 
-.logo img {
+.logo button > img {
+  width: 17px;
+  height: 14px;
+}
+
+/* .logo img {
   width: 17px;
   height: 14px;
   object-fit: contain;
-}
+} */
 
 .logo a {
   text-decoration: inherit;
@@ -18,6 +23,7 @@
   color: inherit;
 }
 
-.main {
-  display: block;
+.main img {
+  width: 70px;
+  height: 20px;
 }
