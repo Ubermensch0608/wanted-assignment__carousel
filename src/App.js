@@ -6,22 +6,25 @@ import Button from "./components/UI/Button";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-const slideWidth = 870;
-
+const slideWidth = 925;
 const App = () => {
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
   const dataRoot = SlideData.SlideInformation.slides;
   const TOTAL_SLIDES = dataRoot.length;
 
+  useEffect(() => {
+    slideRef.current.style.transform = `translateX(-${
+      slideWidth * currentSlide
+    }px)`;
+  }, [currentSlide, slideRef]);
+
   const nextHandler = () => {
     if (currentSlide > TOTAL_SLIDES) {
-      setCurrentSlide(1);
+      setCurrentSlide(0);
     } else {
-      setCurrentSlide(currentSlide + 1);
-      slideRef.current.style.transform = `translateX(-${
-        slideWidth * currentSlide
-      }px)`;
+      setCurrentSlide((prevSlide) => prevSlide + 1);
+
       console.log(slideRef.current.style.transform);
       console.log(currentSlide);
     }
@@ -32,9 +35,6 @@ const App = () => {
       setCurrentSlide(11);
     } else {
       setCurrentSlide((prevSlide) => prevSlide - 1);
-      slideRef.current.style.transform = `translateX(-${
-        slideWidth * currentSlide
-      }px)`;
       console.log(currentSlide);
     }
   };
@@ -55,10 +55,12 @@ const App = () => {
       <NavBar />
       <Main>
         <Banner>
+          {/* SlideTrack은 Container */}
           <SlideTrack>
+            {currentSlide}
+            {/* ContentHolder는 SliderContainer */}
             <ContentHolder ref={slideRef}>{slideData}</ContentHolder>
           </SlideTrack>
-          {currentSlide}
           <Button
             onClick={nextHandler}
             className={classes.next}
@@ -84,22 +86,16 @@ const Main = styled.main`
 const Banner = styled.div`
   width: auto;
   height: 500px;
-  margin-top: 15px;
-
-  @media (min-width: 1200px) {
-    height: auto;
-  }
 `;
 
 const SlideTrack = styled.div`
   width: 1520px;
   height: 310px;
-  overflow: hidden;
 `;
 
 const ContentHolder = styled.ul`
   opacity: 1;
-  width: 12000px;
+  width: 25440px;
   height: 300px;
   position: relative;
   left: 0;
@@ -108,6 +104,10 @@ const ContentHolder = styled.ul`
   padding: 0;
   transform: translateX(-${slideWidth}px);
   transition-duration: 0.6s;
+
+  @media (min-width: 1200px) {
+    transform: translateX(-${slideWidth}px);
+  }
 `;
 
 export default App;
