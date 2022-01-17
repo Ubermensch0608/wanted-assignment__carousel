@@ -6,38 +6,63 @@ import Button from "./components/UI/Button";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-const slideWidth = 925;
+const Main = styled.main`
+  background-color: #fff;
+  @media (min-width: 1200px) {
+    padding-top: 25px;
+  }
+`;
+
+const Banner = styled.div`
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+`;
+
+const SlideTrack = styled.div`
+  width: 300vh;
+  overflow: hidden;
+`;
+
+const SlideHolder = styled.ul`
+  margin: 0;
+  padding: 0;
+  width: 12015px;
+  height: 300px;
+  transform: translateX(0px);
+  transition-duration: 0.6s;
+  display: flex;
+`;
+
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isShown, setIsShown] = useState(false);
   const slideRef = useRef(null);
   const dataRoot = SlideData.SlideInformation.slides;
   const TOTAL_SLIDES = dataRoot.length;
 
   useEffect(() => {
-    slideRef.current.style.transform = `translateX(-${
-      slideWidth * currentSlide
-    }px)`;
-  }, [currentSlide, slideRef]);
+    const currentStyle = slideRef.current.style;
+    currentStyle.transform = `translateX(-${currentSlide * 1050}px)`;
+
+    if (currentSlide === TOTAL_SLIDES) {
+      setCurrentSlide(0);
+    }
+  }, [currentSlide]);
 
   const nextHandler = () => {
-    if (currentSlide > TOTAL_SLIDES) {
-      setCurrentSlide(0);
-    } else {
-      setCurrentSlide((prevSlide) => prevSlide + 1);
-
-      console.log(slideRef.current.style.transform);
-      console.log(currentSlide);
-    }
+    setCurrentSlide(currentSlide + 1);
   };
 
   const prevHandler = () => {
-    if (currentSlide === 1) {
-      setCurrentSlide(11);
+    if (currentSlide === 0) {
+      setCurrentSlide(slideData.length - 3);
     } else {
-      setCurrentSlide((prevSlide) => prevSlide - 1);
-      console.log(currentSlide);
+      setCurrentSlide(currentSlide - 1);
     }
   };
+
   const slideData = dataRoot.map((data) => {
     return (
       <Slide
@@ -46,10 +71,17 @@ const App = () => {
         desc={data.desc}
         src={data.src}
         alt={data.alt}
+        style={{ width: data.width }}
+        isShown={isShown}
       />
     );
   });
 
+  console.log(Object.values(slideData[0]));
+  const firstSlide = Object.values(slideData[0]);
+  const lasetSlide = Object.values(slideData[12]);
+  firstSlide[4]["style"]["width"] = `230px`;
+  lasetSlide[4]["style"]["width"] = `230px`;
   return (
     <React.Fragment>
       <NavBar />
@@ -59,7 +91,7 @@ const App = () => {
           <SlideTrack>
             {currentSlide}
             {/* ContentHolder는 SliderContainer */}
-            <ContentHolder ref={slideRef}>{slideData}</ContentHolder>
+            <SlideHolder ref={slideRef}>{slideData}</SlideHolder>
           </SlideTrack>
           <Button
             onClick={nextHandler}
@@ -76,38 +108,5 @@ const App = () => {
     </React.Fragment>
   );
 };
-
-const Main = styled.main`
-  background-color: #fff;
-  @media (min-width: 1200px) {
-    padding-top: 25px;
-  }
-`;
-const Banner = styled.div`
-  width: auto;
-  height: 500px;
-`;
-
-const SlideTrack = styled.div`
-  width: 1520px;
-  height: 310px;
-`;
-
-const ContentHolder = styled.ul`
-  opacity: 1;
-  width: 25440px;
-  height: 300px;
-  position: relative;
-  left: 0;
-  top: 0;
-  margin: auto;
-  padding: 0;
-  transform: translateX(-${slideWidth}px);
-  transition-duration: 0.6s;
-
-  @media (min-width: 1200px) {
-    transform: translateX(-${slideWidth}px);
-  }
-`;
 
 export default App;
