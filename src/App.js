@@ -46,6 +46,10 @@ const App = () => {
     const currentStyle = slideRef.current.style;
     currentStyle.transform = `translateX(-${currentSlide * 1050}px)`;
 
+    if (currentSlide === 0) {
+      setIsShown(true);
+    }
+
     if (currentSlide === TOTAL_SLIDES) {
       setCurrentSlide(0);
     }
@@ -64,6 +68,8 @@ const App = () => {
   };
 
   const slideData = dataRoot.map((data) => {
+    console.log(data.index);
+    console.log(currentSlide);
     return (
       <Slide
         key={data.id}
@@ -72,7 +78,7 @@ const App = () => {
         src={data.src}
         alt={data.alt}
         style={{ width: data.width }}
-        isShown={isShown}
+        isShown={currentSlide === data.index ? true : false}
       />
     );
   });
