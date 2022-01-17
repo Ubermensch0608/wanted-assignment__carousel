@@ -7,6 +7,8 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const Main = styled.main`
+  marigin: 0;
+  padding: 0;
   background-color: #fff;
   @media (min-width: 1200px) {
     padding-top: 25px;
@@ -31,13 +33,12 @@ const SlideHolder = styled.ul`
   width: 12015px;
   height: 300px;
   transform: translateX(0px);
-  transition-duration: 0.6s;
+  transition-duration: 0.5s;
   display: flex;
 `;
 
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isShown, setIsShown] = useState(false);
   const slideRef = useRef(null);
   const dataRoot = SlideData.SlideInformation.slides;
   const TOTAL_SLIDES = dataRoot.length;
@@ -46,14 +47,19 @@ const App = () => {
     const currentStyle = slideRef.current.style;
     currentStyle.transform = `translateX(-${currentSlide * 1050}px)`;
 
-    if (currentSlide === 0) {
-      setIsShown(true);
-    }
-
     if (currentSlide === TOTAL_SLIDES) {
       setCurrentSlide(0);
     }
   }, [currentSlide]);
+
+  const autoSlide = setInterval(() => {
+    if (currentSlide === 10) {
+      setCurrentSlide(0);
+    } else {
+      setCurrentSlide(currentSlide + 1);
+    }
+    return clearInterval(autoSlide);
+  }, 4000);
 
   const nextHandler = () => {
     setCurrentSlide(currentSlide + 1);
@@ -86,8 +92,8 @@ const App = () => {
   console.log(Object.values(slideData[0]));
   const firstSlide = Object.values(slideData[0]);
   const lasetSlide = Object.values(slideData[12]);
-  firstSlide[4]["style"]["width"] = `230px`;
-  lasetSlide[4]["style"]["width"] = `230px`;
+  firstSlide[4]["style"]["width"] = `31vh`;
+  lasetSlide[4]["style"]["width"] = `31vh`;
   return (
     <React.Fragment>
       <NavBar />
