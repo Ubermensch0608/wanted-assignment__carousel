@@ -42,6 +42,9 @@ const SlideHolder = styled.ul`
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isStop, setIsStop] = useState(false);
+  const [isDrag, setIsDrag] = useState(false);
+  const [startX, setStartX] = useState();
+  const [touchPosition, setTouchPosition] = useState({ x: "", y: "" });
   const slideRef = useRef(null);
   const dataRoot = SlideData.SlideInformation.slides;
   const TOTAL_SLIDES = dataRoot.length;
@@ -52,8 +55,6 @@ const App = () => {
 
     if (currentSlide >= TOTAL_SLIDES - 3) {
       setCurrentSlide(0);
-    } else if (currentSlide) {
-      setCurrentSlide(TOTAL_SLIDES - 3);
     }
 
     const autoSlide = setInterval(() => {
@@ -76,8 +77,29 @@ const App = () => {
   };
 
   const prevHandler = () => {
-    setCurrentSlide(currentSlide - 1);
+    if (currentSlide === 0) {
+      setCurrentSlide(TOTAL_SLIDES - 3);
+    } else {
+      setCurrentSlide(currentSlide - 1);
+    }
   };
+
+  // const startTouchHandler = (event) => {
+  //   setTouchPosition({
+  //     x: event.changedTouches[0].pageX,
+  //     y: event.changedTouches[0].pageY,
+  //   });
+  // };
+
+  // const endTouchHandler = (event) => {
+  //   const distanceX = Math.abs(touchPosition.x - event.changedTouches[0].pageX);
+  //   const distanceY = Math.abs(touchPosition.y - event.changedTouches[0].pageY);
+
+  //   if (distanceY + distanceX > 30 && distanceX > distanceY) {
+  //     setTouchPosition(touchPosition.x + window.innerWidth);
+  //   }
+  // };
+  // console.log(touchPosition);
 
   const slideData = dataRoot.map((data) => {
     return (
@@ -100,6 +122,28 @@ const App = () => {
     setIsStop(false);
   };
 
+  const onDragStart = (event) => {
+    event.preventDefault();
+    setIsDrag(true);
+    setStartX(event.pageX + slideRef.current.scrollLeft);
+  };
+  const onDragEnd = () => {
+    setIsDrag(false);
+  };
+  const onDragMove = (event) => {
+    if (isDrag) {
+      const { scrollWidth, userWidth, scrollLeft } = slideRef.current;
+
+      slideRef.current.scrollLeft = startX - event.pageX;
+
+      if (scrollLeft === 0) {
+        setStartX(event.pageX);
+      } else if (scrollWidth <= userWidth + scrollWidth) {
+        setStartX(event.pageX + scrollLeft);
+      }
+    }
+  };
+
   const firstSlide = Object.values(slideData[0]);
   const lasetSlide = Object.values(slideData[13]);
   firstSlide[4]["style"]["width"] = `32vh`;
@@ -118,10 +162,16 @@ const App = () => {
             {/* ContentHolder는 SliderContainer */}
             <SlideHolder
               ref={slideRef}
+              onMouseDown={onDragStart}
+              onMouseMove={onDragMove}
+              onMouseUp={onDragEnd}
+              onMouseLeave={() => {
+                this.onLeave();
+                this.onDragEnd();
+              }}
               onMouseEnter={onEnter}
-              onMouseLeave={onLeave}
-              onTouchStart={swipeHandler}
-              onTouchEnd={swipeHandler}
+              // onTouchStart={startTouchHandler}
+              // onTouchEnd={endTouchHandler}
             >
               {slideData}
             </SlideHolder>
