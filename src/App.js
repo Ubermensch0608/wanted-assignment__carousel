@@ -39,7 +39,7 @@ const SlideTrack = styled.div`
 const SlideHolder = styled.ul`
   margin: 0;
   padding: 0;
-  width: 13070px;
+  width: 13087px;
   height: 300px;
   transform: translateX(0px);
   transition-duration: 0.5s;
@@ -53,6 +53,10 @@ const Padding = styled.div`
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [isDrag, setIsDrag] = useState(false);
+  const [startX, setStartX] = useState();
+
+  const scrollRef = useRef(null);
   const slideRef = useRef(null);
   const dataRoot = SlideData.SlideInformation.slides;
   const TOTAL_SLIDES = dataRoot.length;
@@ -90,12 +94,46 @@ const App = () => {
         clearInterval(autoSlide);
       }
     };
-  }, [currentSlide, paused]);
+  }, [currentSlide, paused, TOTAL_SLIDES, isDrag, startX]);
 
   const swipeHanlder = useSwipeable({
     onSwipedLeft: () => setCurrentSlide(currentSlide + 1),
     onSwipedRight: () => setCurrentSlide(currentSlide - 1),
   });
+
+  const onDragStart = (event) => {
+    event.preventDefault();
+    setIsDrag(true);
+    setStartX(event.pageX + scrollRef.current.scrollLeft);
+  };
+
+  const onDragMove = (event) => {
+    if (isDrag) {
+      console.log(startX, event.pageX);
+      scrollRef.current.scrollLeft = startX - event.pageX;
+    }
+  };
+
+  const onDragEnd = (event) => {
+    if (isDrag) {
+      if (startX > event.pageX) {
+        if (currentSlide >= TOTAL_SLIDES - 3) {
+          setCurrentSlide(0);
+        } else {
+          setCurrentSlide((prev) => prev + 1);
+        }
+      } else {
+        if (currentSlide === 0) {
+          setCurrentSlide(TOTAL_SLIDES - 3);
+        } else {
+          setCurrentSlide((prev) => prev - 1);
+        }
+      }
+    }
+
+    setIsDrag(false);
+    scrollRef.current.scrollLeft = currentSlide;
+  };
 
   const slideData = dataRoot.map((data) => {
     return (
@@ -108,18 +146,16 @@ const App = () => {
         isShown={currentSlide === data.index ? true : false}
         style={{
           width: data.width,
+          clip: data.clip,
         }}
       />
     );
   });
 
   const firstSlide = Object.values(slideData[0]);
-  const lasetSlide = Object.values(slideData[13]);
   const currentSlideStyle = Object.values(slideData[currentSlide + 1]);
-  firstSlide[4]["style"]["width"] = `32vh`;
   firstSlide[4]["style"]["marginLeft"] = `0`;
   firstSlide[4]["style"]["paddingLeft"] = `0`;
-  lasetSlide[4]["style"]["width"] = `32vh`;
   currentSlideStyle[4]["style"]["filter"] = `brightness(100%)`;
 
   return (
@@ -128,7 +164,14 @@ const App = () => {
       <Padding />
       <Main>
         <Banner>
-          <SlideTrack {...swipeHanlder}>
+          <SlideTrack
+            {...swipeHanlder}
+            ref={scrollRef}
+            onMouseDown={onDragStart}
+            onMouseMove={onDragMove}
+            onMouseUp={onDragEnd}
+            onMouseLeave={onDragEnd}
+          >
             <SlideHolder
               ref={slideRef}
               onMouseEnter={() => setPaused(true)}

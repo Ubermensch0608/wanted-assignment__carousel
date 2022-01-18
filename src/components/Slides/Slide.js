@@ -13,11 +13,12 @@ const List = styled.li`
   }
 `;
 
-const Filter = styled.div``;
-
 const Slide = (props) => {
+  const preventHandler = (event) => {
+    event.preventDefault();
+  };
   return (
-    <List style={props.style}>
+    <List style={props.style} onClick={preventHandler}>
       <SlideImage src={props.src} alt={props.alt} />
       {props.isShown && <SlideInfo title={props.title} desc={props.desc} />}
     </List>
