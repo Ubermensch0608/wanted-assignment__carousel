@@ -13,6 +13,8 @@ const List = styled.li`
   }
 `;
 
+const Filter = styled.div``;
+
 const Slide = (props) => {
   return (
     <List style={props.style}>
