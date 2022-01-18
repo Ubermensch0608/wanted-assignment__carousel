@@ -7,8 +7,8 @@ import classes from "./MainBarNav.module.css";
 const MainBarNav = (props) => {
   return (
     <nav className={classes["main-bar-nav"]}>
-      <Logo />
-      <Menu />
+      <Logo className={classes.top} />
+      <Menu className={classes.menu} />
       <Aside />
     </nav>
   );

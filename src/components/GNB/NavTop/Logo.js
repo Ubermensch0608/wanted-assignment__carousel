@@ -1,4 +1,5 @@
 import burger_img from "../../../images/icon-menu.png";
+import wanted_logo from "../../../images/wanted_logo.jpg";
 import classes from "./Logo.module.css";
 
 const Logo = (props) => {
@@ -9,7 +10,7 @@ const Logo = (props) => {
           <img src={burger_img} alt="burger_img" />
         </button>
         <a href="/" className={classes.main}>
-          <i className={classes.new}></i>
+          <img src={wanted_logo} alt="wanted_logo"></img>
         </a>
       </div>
     </div>

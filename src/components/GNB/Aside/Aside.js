@@ -17,19 +17,21 @@ const Aside = () => {
             <BellSvg />
           </button>
         </li>
-        <li>
+        <li className={classes["profile-box"]}>
           <button>
-            <div>
-              <img
-                className={classes["profile-default"]}
+            <div className={classes.border}>
+              <div
+                className={classes.avatar}
                 src={profileDefault}
                 alt="profile-default"
-              />
+              ></div>
             </div>
           </button>
         </li>
         <li className={classes.division}>
-          <button className={classes["dashboard-btn"]}>기업 서비스</button>
+          <a href="/" className={classes["dashboard-btn"]}>
+            기업 서비스
+          </a>
         </li>
       </ul>
     </aside>
