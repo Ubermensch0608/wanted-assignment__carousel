@@ -1,9 +1,11 @@
+import React, { useEffect, useRef, useState } from "react";
+
 import NavBar from "./components/GNB/NavBar";
 import Slide from "./components/Slides/Slide";
 import SlideData from "./store/slide-data.json";
-import classes from "./App.module.css";
 import Button from "./components/UI/Button";
-import React, { useEffect, useRef, useState } from "react";
+
+import classes from "./App.module.css";
 import styled from "styled-components";
 
 const Main = styled.main`
@@ -30,7 +32,7 @@ const SlideTrack = styled.div`
 const SlideHolder = styled.ul`
   margin: 0;
   padding: 0;
-  width: 12015px;
+  width: 13070px;
   height: 300px;
   transform: translateX(0px);
   transition-duration: 0.5s;
@@ -39,6 +41,7 @@ const SlideHolder = styled.ul`
 
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isStop, setIsStop] = useState(false);
   const slideRef = useRef(null);
   const dataRoot = SlideData.SlideInformation.slides;
   const TOTAL_SLIDES = dataRoot.length;
@@ -47,35 +50,36 @@ const App = () => {
     const currentStyle = slideRef.current.style;
     currentStyle.transform = `translateX(-${currentSlide * 1050}px)`;
 
-    if (currentSlide === TOTAL_SLIDES) {
+    if (currentSlide >= TOTAL_SLIDES - 3) {
       setCurrentSlide(0);
+    } else if (currentSlide) {
+      setCurrentSlide(TOTAL_SLIDES - 3);
     }
-  }, [currentSlide]);
 
-  const autoSlide = setInterval(() => {
-    if (currentSlide === 10) {
-      setCurrentSlide(0);
-    } else {
-      setCurrentSlide(currentSlide + 1);
-    }
-    return clearInterval(autoSlide);
-  }, 4000);
+    const autoSlide = setInterval(() => {
+      if (!isStop) {
+        setCurrentSlide(currentSlide + 1);
+      }
+    }, 4000);
 
+    return () => {
+      if (autoSlide) {
+        console.log("stop");
+        clearInterval(autoSlide);
+      }
+    };
+  }, [currentSlide, isStop]);
+
+  console.log(TOTAL_SLIDES);
   const nextHandler = () => {
     setCurrentSlide(currentSlide + 1);
   };
 
   const prevHandler = () => {
-    if (currentSlide === 0) {
-      setCurrentSlide(slideData.length - 3);
-    } else {
-      setCurrentSlide(currentSlide - 1);
-    }
+    setCurrentSlide(currentSlide - 1);
   };
 
   const slideData = dataRoot.map((data) => {
-    console.log(data.index);
-    console.log(currentSlide);
     return (
       <Slide
         key={data.id}
@@ -89,11 +93,20 @@ const App = () => {
     );
   });
 
-  console.log(Object.values(slideData[0]));
+  const onEnter = () => {
+    setIsStop(true);
+  };
+  const onLeave = () => {
+    setIsStop(false);
+  };
+
   const firstSlide = Object.values(slideData[0]);
-  const lasetSlide = Object.values(slideData[12]);
-  firstSlide[4]["style"]["width"] = `31vh`;
-  lasetSlide[4]["style"]["width"] = `31vh`;
+  const lasetSlide = Object.values(slideData[13]);
+  firstSlide[4]["style"]["width"] = `32vh`;
+  firstSlide[4]["style"]["marginLeft"] = `0`;
+  firstSlide[4]["style"]["paddingLeft"] = `0`;
+  lasetSlide[4]["style"]["width"] = `32vh`;
+
   return (
     <React.Fragment>
       <NavBar />
@@ -103,16 +116,28 @@ const App = () => {
           <SlideTrack>
             {currentSlide}
             {/* ContentHolder는 SliderContainer */}
-            <SlideHolder ref={slideRef}>{slideData}</SlideHolder>
+            <SlideHolder
+              ref={slideRef}
+              onMouseEnter={onEnter}
+              onMouseLeave={onLeave}
+              onTouchStart={swipeHandler}
+              onTouchEnd={swipeHandler}
+            >
+              {slideData}
+            </SlideHolder>
           </SlideTrack>
           <Button
-            onClick={nextHandler}
             className={classes.next}
+            onClick={nextHandler}
+            onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
             pathD="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"
           />
           <Button
-            onClick={prevHandler}
             className={classes.prev}
+            onClick={prevHandler}
+            onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
             pathD="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"
           />
         </Banner>

@@ -5,6 +5,8 @@ const Button = (props) => {
     <button
       className={`${classes.arrow} ${props.className}`}
       onClick={props.onClick}
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
     >
       <span>
         <svg viewBox="0 0 18 18">
