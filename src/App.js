@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSwipeable } from "react-swipeable";
 
 import NavBar from "./components/GNB/NavBar";
 import Slide from "./components/Slides/Slide";
@@ -96,11 +95,6 @@ const App = () => {
     };
   }, [currentSlide, paused, TOTAL_SLIDES, isDrag, startX]);
 
-  const swipeHanlder = useSwipeable({
-    onSwipedLeft: () => setCurrentSlide(currentSlide + 1),
-    onSwipedRight: () => setCurrentSlide(currentSlide - 1),
-  });
-
   const onDragStart = (event) => {
     event.preventDefault();
     setIsDrag(true);
@@ -109,7 +103,6 @@ const App = () => {
 
   const onDragMove = (event) => {
     if (isDrag) {
-      console.log(startX, event.pageX);
       scrollRef.current.scrollLeft = startX - event.pageX;
     }
   };
@@ -165,7 +158,6 @@ const App = () => {
       <Main>
         <Banner>
           <SlideTrack
-            {...swipeHanlder}
             ref={scrollRef}
             onMouseDown={onDragStart}
             onMouseMove={onDragMove}
