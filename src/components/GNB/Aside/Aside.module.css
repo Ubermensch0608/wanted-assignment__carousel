@@ -17,20 +17,22 @@
 .aside a {
   text-decoration: inherit;
 }
+.aside a {
+  text-decoration: inherit;
+}
 
 .aside ul,
 li > * {
   height: 100%;
-  padding: 0 10px;
   font-size: 14px;
   color: #333;
   font-weight: 600;
   line-height: 1;
 }
 
-.aside > ul li {
+.aside ul,
+li {
   position: relative;
-  display: inline-block;
   height: 100%;
   vertical-align: middle;
 }
@@ -149,5 +151,52 @@ li > * {
   }
   .profile-box {
     margin-right: 0;
+  }
+  .aside ul li a {
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 32px;
+  }
+
+  .aside > ul li button {
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 32px;
+  }
+
+  .profile-box {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 5px;
+  }
+  .profile-box button {
+    height: 32px;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: top;
+    padding: 0;
+    margin-right: 11px;
+  }
+
+  .avatar {
+    background-image: url(https://static.wanted.co.kr/images/profile_default.png);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .border {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #e1e2e3;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
   }
 }

@@ -1,0 +1,92 @@
+.information {
+  position: absolute;
+  bottom: 28px;
+  width: 330px;
+  height: 146px;
+  border-radius: 4px;
+  background: #fff;
+  text-align: left;
+  left: 28px;
+}
+.information h2 {
+  margin-top: 20px;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 700;
+  color: #333;
+  width: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.information h3 {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.15;
+  font-weight: 500;
+  color: #666;
+  width: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.information hr {
+  display: block;
+  height: 1px;
+  margin: 0;
+  border: none;
+  flex-shrink: 0;
+  background-color: #ececec;
+}
+.information svg {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  flex-shrink: 0;
+  font-size: inherit;
+}
+
+.go-btn {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  color: #36f;
+  padding: 6px 8px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  min-width: 64px;
+  box-sizing: border-box;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+@media (min-width: 1200px) {
+  .information h2 {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .information h3 {
+    margin: 0 20px;
+    height: 44px;
+    font-size: 14px;
+    line-height: 1.64;
+    color: #333;
+  }
+  .information hr {
+    display: block;
+  }
+  .go-btn {
+    margin: 6px 0 0 13px;
+    padding: 6px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    color: #36f;
+  }
+}
