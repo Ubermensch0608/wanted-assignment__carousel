@@ -1,10 +1,11 @@
+import React from "react";
 import NavBar from "./components/GNB/NavBar";
 
 function App() {
   return (
-    <div>
+    <React.Fragment>
       <NavBar />
-    </div>
+    </React.Fragment>
   );
 }
 

@@ -8,12 +8,12 @@ const Aside = () => {
     <aside className={classes.aside}>
       <ul>
         <li>
-          <button>
+          <button className={classes.searchBtn}>
             <SearchSvg />
           </button>
         </li>
         <li>
-          <button>
+          <button className={classes.notiBtn}>
             <BellSvg />
           </button>
         </li>

@@ -7,12 +7,9 @@
 .menu li {
   height: inherit;
   display: inline-block;
-}
-.menu li::after {
-  height: 100%;
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 .menu li a {
@@ -26,6 +23,14 @@
   color: inherit;
   text-decoration: inherit;
   cursor: pointer;
+  background-color: transparent;
+}
+
+.menu li:after {
+  height: 100%;
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
 }
 
 @media (min-width: 1200px) {
@@ -43,5 +48,11 @@
   .menu {
     justify-content: flex-start;
     margin-right: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .menu {
+    text-align: left;
   }
 }

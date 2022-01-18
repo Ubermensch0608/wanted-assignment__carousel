@@ -1,18 +1,17 @@
 .aside {
   height: 100%;
-  padding: 10px;
+  padding: 9px 0;
 }
 
-.aside ul {
+.aside > ul {
   height: 100%;
   margin: 0;
 }
 
 .aside li {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   height: 100%;
-  vertical-align: middle;
 }
 
 .aside a {
@@ -22,31 +21,77 @@
 .aside ul,
 li > * {
   height: 100%;
-  padding: 0 5px;
+  padding: 0 10px;
   font-size: 14px;
   color: #333;
   font-weight: 600;
   line-height: 1;
 }
 
-.aside ul,
-li {
+.aside > ul li {
   position: relative;
+  display: inline-block;
   height: 100%;
   vertical-align: middle;
 }
 
-.division {
-  display: inline-flex;
+.aside ul li a {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.division::before {
-  display: block;
+.aside > ul li .searchBtn {
+  position: relative;
+}
+
+.aside > ul li .notiBtn {
+  position: relative;
+  margin-right: 10px;
+}
+
+.profile-box {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.profile-box button {
+  height: 32px;
+  font-family: inherit;
+  text-transform: none;
+  overflow: visible;
+  font: inherit;
+}
+
+.avatar {
+  background-image: url(https://static.wanted.co.kr/images/profile_default.png);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.border {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  border: 1px solid #e1e2e3;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.division:before {
+  display: inline-flex;
   content: "";
   width: 1px;
   height: 10px;
   background-color: #e1e2e3;
-  margin: auto 10px;
+  margin: 10px;
 }
 
 .dashboard-btn {
@@ -61,50 +106,48 @@ li {
   font-weight: 400;
 }
 
-.aside ul li a {
-  display: inline-block;
-  vertical-align: bottom;
-  line-height: 32px;
-}
-
-.aside > ul li button {
-  display: inline-block;
-  vertical-align: bottom;
-  line-height: 32px;
-}
-
-.profile-box {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 5px;
-}
-.profile-box button {
-  height: 32px;
-  align-items: center;
-  justify-content: space-between;
-  vertical-align: top;
-  padding: 0;
-  margin-right: 11px;
-}
-
-.avatar {
-  background-image: url(https://static.wanted.co.kr/images/profile_default.png);
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background-position: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.border {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid #e1e2e3;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
+.aside svg:not(:root) {
   overflow: hidden;
+}
+
+@media (min-width: 1200px) {
+  .aside > ul li > * {
+    padding: 0 10px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .notiBtn {
+    margin-right: 5px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .aside > ul li .searchBtn {
+    margin: 0;
+  }
+  .aside ul li .notiBtn {
+    margin: 0;
+  }
+  .profile-box {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .aside {
+    padding: 14px 0;
+  }
+  .aside > ul {
+    margin-top: -5px;
+  }
+  .aside ul li .searchBtn {
+    margin: 0;
+  }
+  .aside ul li .notiBtn {
+    margin: 0;
+  }
+  .profile-box {
+    margin-right: 0;
+  }
 }
