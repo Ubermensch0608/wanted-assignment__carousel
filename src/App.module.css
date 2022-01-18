@@ -1,13 +1,8 @@
-.track::before {
-  content: "";
-  display: table;
-}
-
 .prev {
-  left: calc((100% - 1210px) / 2);
+  left: calc((100% - 1200px) / 2);
 }
 .next {
-  right: calc((100% - 1200px) / 2);
+  right: calc((100% - 1180px) / 2);
 }
 
 @media (min-width: 1200px) {

@@ -19,10 +19,16 @@ const Main = styled.main`
 `;
 
 const Banner = styled.div`
+  position: relative;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
+
+  @media (min-width: 1200px) {
+    height: auto;
+  }
 `;
 
 const SlideTrack = styled.div`
@@ -38,6 +44,10 @@ const SlideHolder = styled.ul`
   transform: translateX(0px);
   transition-duration: 0.5s;
   display: flex;
+`;
+
+const Padding = styled.div`
+  height: 1px;
 `;
 
 const App = () => {
@@ -115,10 +125,10 @@ const App = () => {
   return (
     <React.Fragment>
       <NavBar />
+      <Padding />
       <Main>
         <Banner>
           <SlideTrack {...swipeHanlder}>
-            {currentSlide}
             <SlideHolder
               ref={slideRef}
               onMouseEnter={() => setPaused(true)}
