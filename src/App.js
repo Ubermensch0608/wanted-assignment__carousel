@@ -35,10 +35,23 @@ const Banner = styled.div`
   @media (min-width: 1200px) {
     height: auto;
   }
+  @media (max-width: 1024px) and (min-width: 768px) {
+    height: 1000px;
+  }
+  @media (max-width: 767px) {
+    height: 450px;
+  }
 `;
 
 const SlideTrack = styled.div`
   width: 1240px;
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    display: inline-block;
+    width: 1024px;
+
+    /* justify-content: flex-start; */
+  }
 `;
 
 const SlideHolder = styled.ul`
@@ -53,6 +66,12 @@ const SlideHolder = styled.ul`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    width: 33700px;
+
+    /* justify-content: flex-start; */
+  }
 `;
 
 const Padding = styled.div`
@@ -181,7 +200,6 @@ const App = () => {
             >
               {slideData}
             </SlideHolder>
-            {currentSlide}
           </SlideTrack>
           <Button
             className={classes.next}

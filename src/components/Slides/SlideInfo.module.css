@@ -90,3 +90,49 @@
     color: #36f;
   }
 }
+@media (max-width: 1024px) and (min-width: 768px) {
+  .information {
+    position: relative;
+    top: 0px;
+    display: inline-block;
+    text-align: center;
+  }
+  .information h2 {
+    margin-top: 30px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .information h3 {
+    margin: 0 20px;
+    height: 22px;
+    font-size: 14px;
+    line-height: 1.64;
+    color: #333;
+  }
+  .information hr {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .information {
+    position: relative;
+    top: -10px;
+    display: block;
+    text-align: center;
+  }
+  .information h2 {
+    margin-top: 30px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .information h3 {
+    margin: 0 20px;
+    height: 22px;
+    font-size: 14px;
+    line-height: 1.64;
+    color: #333;
+  }
+  .information hr {
+    display: none;
+  }
+}
