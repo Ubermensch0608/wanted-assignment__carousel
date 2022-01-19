@@ -6,6 +6,12 @@ const List = styled.li`
   outline: none;
   float: left;
   filter: brightness(50%);
+  position: relative;
+
+  @media (min-width: 1200px) {
+    margin: 0 10px;
+    box-sizing: content-box;
+  }
 
   @media (min-width: 1200px) {
     margin: 0 10px;

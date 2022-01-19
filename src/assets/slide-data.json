@@ -1,0 +1,245 @@
+{
+  "SlideInformation": {
+    "slides": [
+      {
+        "id": "slide_1",
+        "title": "해, 커리어 EP 02 공개",
+        "src": "https://static.wanted.co.kr/images/banners/1468/3df61cbc.jpg",
+        "desc": "최종 발표를 위한 마지막 관문 2라운드의 승자는?",
+        "index": "",
+        "width": "300px"
+      },
+      {
+        "id": "slide_2",
+        "title": "요즘 MD가 일하는 방법",
+        "src": "https://static.wanted.co.kr/images/banners/1434/fdbbcb06.jpg",
+        "desc": "실무자가 공개하는 MD 커리어의 모든 것!",
+        "index": 0
+      },
+      {
+        "id": "slide_3",
+        "title": "유저 경험을 설계하라!",
+        "src": "https://static.wanted.co.kr/images/banners/1435/6cdcea85.jpg",
+        "desc": "문제를 해결하는 프로덕트 디자인",
+        "index": 1
+      },
+
+      {
+        "id": "slide_4",
+        "title": "아는 만큼 보인다!",
+        "src": "https://static.wanted.co.kr/images/banners/1454/e504b006.jpg",
+        "desc": "노동법 '채용' 시리즈",
+        "index": 2
+      },
+
+      {
+        "id": "slide_5",
+        "title": "스타벅스 굿즈 좋아하세요?",
+        "src": "https://static.wanted.co.kr/images/banners/1438/015566ac.jpg",
+        "desc": "사랑받는 디자인의 비밀",
+        "index": 3
+      },
+      {
+        "id": "slide_6",
+        "title": "개발자 성장 비결 공개!",
+        "src": "https://static.wanted.co.kr/images/banners/1460/619f3af7.jpg",
+        "desc": "글 쓰는 개발자들의 이야기",
+        "index": 4
+      },
+      {
+        "id": "slide_7",
+        "title": "마케터를 위한 데이터",
+        "src": "https://static.wanted.co.kr/images/banners/1436/e2dd9445.jpg",
+        "desc": "잘 나가는 마케터는 무엇이 다를까!?",
+        "index": 5
+      },
+      {
+        "id": "slide_8",
+        "title": "Git? GitHub?",
+        "src": "https://static.wanted.co.kr/images/banners/1452/be4ec643.jpg",
+        "desc": "협업 필수 도구 마스터하기",
+        "index": 6
+      },
+      {
+        "id": "slide_9",
+        "title": "믿을 것은 데이터 뿐!",
+        "src": "https://static.wanted.co.kr/images/banners/1451/725c6862.jpg",
+        "desc": "요즘 데이터팀은 어떻게 일할까?",
+        "index": 7
+      },
+      {
+        "id": "slide_10",
+        "title": "나도 개발자 되고 싶다",
+        "src": "https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg",
+        "desc": "프론트엔드 무료 교육과정 참여하기",
+        "index": 8
+      },
+      {
+        "id": "slide_11",
+        "title": "리크루터 커리어 가이드",
+        "src": "https://static.wanted.co.kr/images/banners/1453/7a978579.jpg",
+        "desc": "싼마이 리크루터가 되지 않기 위해",
+        "index": 9
+      },
+      {
+        "id": "slide_1_2",
+        "title": "해, 커리어 EP 02 공개",
+        "src": "https://static.wanted.co.kr/images/banners/1468/3df61cbc.jpg",
+        "desc": "최종 발표를 위한 마지막 관문 2라운드의 승자는?",
+        "index": 10
+      },
+      {
+        "id": "slide_2_2",
+        "title": "요즘 MD가 일하는 방법",
+        "src": "https://static.wanted.co.kr/images/banners/1434/fdbbcb06.jpg",
+        "desc": "실무자가 공개하는 MD 커리어의 모든 것!",
+        "index": 11
+      },
+      {
+        "id": "slide_3_2",
+        "title": "유저 경험을 설계하라!",
+        "src": "https://static.wanted.co.kr/images/banners/1435/6cdcea85.jpg",
+        "desc": "문제를 해결하는 프로덕트 디자인",
+        "index": 12
+      },
+
+      {
+        "id": "slide_4_2",
+        "title": "아는 만큼 보인다!",
+        "src": "https://static.wanted.co.kr/images/banners/1454/e504b006.jpg",
+        "desc": "노동법 '채용' 시리즈",
+        "index": 13
+      },
+
+      {
+        "id": "slide_5_2",
+        "title": "스타벅스 굿즈 좋아하세요?",
+        "src": "https://static.wanted.co.kr/images/banners/1438/015566ac.jpg",
+        "desc": "사랑받는 디자인의 비밀",
+        "index": 14
+      },
+      {
+        "id": "slide_6_2",
+        "title": "개발자 성장 비결 공개!",
+        "src": "https://static.wanted.co.kr/images/banners/1460/619f3af7.jpg",
+        "desc": "글 쓰는 개발자들의 이야기",
+        "index": 15
+      },
+      {
+        "id": "slide_7_2",
+        "title": "마케터를 위한 데이터",
+        "src": "https://static.wanted.co.kr/images/banners/1436/e2dd9445.jpg",
+        "desc": "잘 나가는 마케터는 무엇이 다를까!?",
+        "index": 16
+      },
+      {
+        "id": "slide_8_2",
+        "title": "Git? GitHub?",
+        "src": "https://static.wanted.co.kr/images/banners/1452/be4ec643.jpg",
+        "desc": "협업 필수 도구 마스터하기",
+        "index": 17
+      },
+      {
+        "id": "slide_9_2",
+        "title": "믿을 것은 데이터 뿐!",
+        "src": "https://static.wanted.co.kr/images/banners/1451/725c6862.jpg",
+        "desc": "요즘 데이터팀은 어떻게 일할까?",
+        "index": 18
+      },
+      {
+        "id": "slide_10_2",
+        "title": "나도 개발자 되고 싶다",
+        "src": "https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg",
+        "desc": "프론트엔드 무료 교육과정 참여하기",
+        "index": 19
+      },
+      {
+        "id": "slide_11_2",
+        "title": "리크루터 커리어 가이드",
+        "src": "https://static.wanted.co.kr/images/banners/1453/7a978579.jpg",
+        "desc": "싼마이 리크루터가 되지 않기 위해",
+        "index": 20
+      },
+      {
+        "id": "slide_1_3",
+        "title": "해, 커리어 EP 02 공개",
+        "src": "https://static.wanted.co.kr/images/banners/1468/3df61cbc.jpg",
+        "desc": "최종 발표를 위한 마지막 관문 2라운드의 승자는?",
+        "index": 21
+      },
+      {
+        "id": "slide_2_3",
+        "title": "요즘 MD가 일하는 방법",
+        "src": "https://static.wanted.co.kr/images/banners/1434/fdbbcb06.jpg",
+        "desc": "실무자가 공개하는 MD 커리어의 모든 것!",
+        "index": 22
+      },
+      {
+        "id": "slide_3_3",
+        "title": "유저 경험을 설계하라!",
+        "src": "https://static.wanted.co.kr/images/banners/1435/6cdcea85.jpg",
+        "desc": "문제를 해결하는 프로덕트 디자인",
+        "index": 23
+      },
+
+      {
+        "id": "slide_4_3",
+        "title": "아는 만큼 보인다!",
+        "src": "https://static.wanted.co.kr/images/banners/1454/e504b006.jpg",
+        "desc": "노동법 '채용' 시리즈",
+        "index": 24
+      },
+
+      {
+        "id": "slide_5_3",
+        "title": "스타벅스 굿즈 좋아하세요?",
+        "src": "https://static.wanted.co.kr/images/banners/1438/015566ac.jpg",
+        "desc": "사랑받는 디자인의 비밀",
+        "index": 25
+      },
+      {
+        "id": "slide_6_3",
+        "title": "개발자 성장 비결 공개!",
+        "src": "https://static.wanted.co.kr/images/banners/1460/619f3af7.jpg",
+        "desc": "글 쓰는 개발자들의 이야기",
+        "index": 26
+      },
+      {
+        "id": "slide_7_3",
+        "title": "마케터를 위한 데이터",
+        "src": "https://static.wanted.co.kr/images/banners/1436/e2dd9445.jpg",
+        "desc": "잘 나가는 마케터는 무엇이 다를까!?",
+        "index": 27
+      },
+      {
+        "id": "slide_8_3",
+        "title": "Git? GitHub?",
+        "src": "https://static.wanted.co.kr/images/banners/1452/be4ec643.jpg",
+        "desc": "협업 필수 도구 마스터하기",
+        "index": 28
+      },
+      {
+        "id": "slide_9_3",
+        "title": "믿을 것은 데이터 뿐!",
+        "src": "https://static.wanted.co.kr/images/banners/1451/725c6862.jpg",
+        "desc": "요즘 데이터팀은 어떻게 일할까?",
+        "index": 29
+      },
+      {
+        "id": "slide_10_3",
+        "title": "나도 개발자 되고 싶다",
+        "src": "https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg",
+        "desc": "프론트엔드 무료 교육과정 참여하기",
+        "index": 30
+      },
+      {
+        "id": "slide_11_3",
+        "title": "리크루터 커리어 가이드",
+        "src": "https://static.wanted.co.kr/images/banners/1453/7a978579.jpg",
+        "desc": "싼마이 리크루터가 되지 않기 위해",
+        "index": 31,
+        "width": "300px"
+      }
+    ]
+  }
+}
