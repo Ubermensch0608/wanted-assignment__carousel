@@ -2,28 +2,35 @@ import React, { useEffect, useRef, useState } from "react";
 
 import NavBar from "./components/GNB/NavBar";
 import Slide from "./components/Slides/Slide";
-import SlideData from "./store/slide-data.json";
+import SlideData from "../src/assets/slide-data.json";
 import Button from "./components/UI/Button";
 
 import classes from "./App.module.css";
 import styled from "styled-components";
 
 const Main = styled.main`
+  overflow: hidden;
+  align-items: center;
+  text-align: center;
+  display: green;
   marigin: 0;
   padding: 0;
   background-color: #fff;
+
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+
   @media (min-width: 1200px) {
     padding-top: 25px;
   }
 `;
 
 const Banner = styled.div`
-  position: relative;
-  overflow: hidden;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
 
   @media (min-width: 1200px) {
     height: auto;
@@ -31,18 +38,21 @@ const Banner = styled.div`
 `;
 
 const SlideTrack = styled.div`
-  width: 300vh;
-  overflow: hidden;
+  width: 1240px;
 `;
 
 const SlideHolder = styled.ul`
   margin: 0;
   padding: 0;
-  width: 13087px;
+  width: 35800px;
+
   height: 300px;
-  transform: translateX(0px);
+  transform: translateX(0);
   transition-duration: 0.5s;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
 `;
 
 const Padding = styled.div`
@@ -50,7 +60,7 @@ const Padding = styled.div`
 `;
 
 const App = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(11);
   const [paused, setPaused] = useState(false);
   const [isDrag, setIsDrag] = useState(false);
   const [startX, setStartX] = useState();
@@ -61,16 +71,16 @@ const App = () => {
   const TOTAL_SLIDES = dataRoot.length;
 
   const nextHandler = () => {
-    if (currentSlide >= 10) {
-      setCurrentSlide(0);
+    if (currentSlide >= TOTAL_SLIDES - 11) {
+      setCurrentSlide(11);
     } else {
       setCurrentSlide(currentSlide + 1);
     }
   };
 
   const prevHandler = () => {
-    if (currentSlide === 0) {
-      setCurrentSlide(TOTAL_SLIDES - 3);
+    if (currentSlide === 11) {
+      setCurrentSlide(TOTAL_SLIDES - 11);
     } else {
       setCurrentSlide(currentSlide - 1);
     }
@@ -78,11 +88,11 @@ const App = () => {
 
   useEffect(() => {
     const currentStyle = slideRef.current.style;
-    currentStyle.transform = `translateX(-${currentSlide * 1050}px)`;
+    currentStyle.transform = `translateX(-${currentSlide * 1080}px)`;
 
     const autoSlide = setInterval(() => {
-      if (currentSlide >= TOTAL_SLIDES - 3) {
-        setCurrentSlide(0);
+      if (currentSlide >= TOTAL_SLIDES - 11) {
+        setCurrentSlide(11);
       } else if (!paused) {
         setCurrentSlide(currentSlide + 1);
       }
@@ -110,14 +120,14 @@ const App = () => {
   const onDragEnd = (event) => {
     if (isDrag) {
       if (startX > event.pageX) {
-        if (currentSlide >= TOTAL_SLIDES - 3) {
-          setCurrentSlide(0);
+        if (currentSlide >= TOTAL_SLIDES - 11) {
+          setCurrentSlide(11);
         } else {
           setCurrentSlide((prev) => prev + 1);
         }
       } else {
-        if (currentSlide === 0) {
-          setCurrentSlide(TOTAL_SLIDES - 3);
+        if (currentSlide === 11) {
+          setCurrentSlide(TOTAL_SLIDES - 11);
         } else {
           setCurrentSlide((prev) => prev - 1);
         }
@@ -136,7 +146,7 @@ const App = () => {
         desc={data.desc}
         src={data.src}
         alt={data.alt}
-        isShown={currentSlide === data.index ? true : false}
+        isShown={currentSlide - 1 === data.index ? true : false}
         style={{
           width: data.width,
           clip: data.clip,
@@ -146,7 +156,7 @@ const App = () => {
   });
 
   const firstSlide = Object.values(slideData[0]);
-  const currentSlideStyle = Object.values(slideData[currentSlide + 1]);
+  const currentSlideStyle = Object.values(slideData[currentSlide]);
   firstSlide[4]["style"]["marginLeft"] = `0`;
   firstSlide[4]["style"]["paddingLeft"] = `0`;
   currentSlideStyle[4]["style"]["filter"] = `brightness(100%)`;
@@ -155,7 +165,7 @@ const App = () => {
     <React.Fragment>
       <NavBar />
       <Padding />
-      <Main>
+      <Main ref={scrollRef}>
         <Banner>
           <SlideTrack
             ref={scrollRef}
@@ -171,6 +181,7 @@ const App = () => {
             >
               {slideData}
             </SlideHolder>
+            {currentSlide}
           </SlideTrack>
           <Button
             className={classes.next}
