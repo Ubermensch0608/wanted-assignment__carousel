@@ -12,10 +12,15 @@ const List = styled.li`
     margin: 0 10px;
     box-sizing: content-box;
   }
+
   @media (max-width: 1024px) and (min-width: 768px) {
     padding: 25px 10px;
     text-align: center;
     align-content: center;
+  }
+
+  @media (max-width: 767px) {
+    margin: 10px;
   }
 `;
 
